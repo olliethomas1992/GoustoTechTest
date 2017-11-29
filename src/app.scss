@@ -1,0 +1,11 @@
+
+
+.menu {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+
+    &__menu-itme {
+        justify-content: space-between;
+    }
+}
