@@ -10,7 +10,8 @@ const config = {
         contentBase: "./dist",
         stats: {
             modules: false
-        }
+        },
+        historyApiFallback: true
     },
     plugins: [
         new WebpackNotifier({

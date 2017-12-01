@@ -6,7 +6,7 @@ import App from './App';
 export default function() {
     return (
         <Switch>
-            <Route exact path="/" component={App} />
+            <Route exact path="/:id?" component={App} />
         </Switch>
     )
 }

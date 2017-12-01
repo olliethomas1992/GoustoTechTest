@@ -7,7 +7,7 @@ export default class App extends Component {
     render() {
         return (
             <div className="container">
-                <Header />
+                <Header categorySlug={this.props.match.params.id} />
                 <h1>App Page</h1>
                 <ProductsList/>
             </div>

@@ -2,10 +2,12 @@ import axios from "axios";
 import slugify from "slugify";
 import _ from 'lodash';
 
-import { FETCH_CATEGORIES } from "../../types";
+import { FETCH_CATEGORIES, SELECT_CATEGORY } from "../../types";
 
 const API_URL = `https://api.gousto.co.uk/products/v2.0/categories`;
 
+/* Fetch Categories
+---------------------------------------------------- */
 export function fetchCategories() {
     return axios.get(API_URL).then(({ data: { data } }) => {
         return {
@@ -25,4 +27,13 @@ function transformCategories(categories) {
         category.slug = slug;
         return category;
     });
+}
+
+/* Select a Category
+---------------------------------------------------- */
+export function selectCategory(category) {
+    return {
+        type: SELECT_CATEGORY,
+        payload: category
+    }
 }

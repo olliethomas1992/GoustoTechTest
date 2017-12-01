@@ -1,29 +1,48 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCategories } from "../categories/actions";
+import { fetchCategories, selectCategory } from "../categories/actions";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
+    /* Life Cycle Methods
+    ---------------------------------------------------- */
     componentDidMount() {
-        this.props.fetchCategories();
+        this.props.fetchCategories().then(() => {
+            this.props.selectCategory(this.props.selectedCategory || {});
+        });
     }
 
-    renderCategories() {
-        return _.map(this.props.categories, (category, index) => {
-            return <li className="menu__menu-item" key={index}>{category.title}</li>;
-        });
+    componentWillReceiveProps(newProps) {
+        this.props.selectCategory(newProps.selectedCategory);
     }
 
     render() {
         return <ul className="menu">{this.renderCategories()}</ul>;
     }
+
+    /* Component Functions
+    ---------------------------------------------------- */
+    renderCategories() {
+        return _.map(this.props.categories, (category, index) => {
+            return (
+                <li className="menu__menu-item" key={index}>
+                    <Link to={`/${category.slug}`}>{category.title}</Link>
+                </li>
+            );
+        });
+    }
 }
 
-const mapStateToProps = state => ({
-    categories: state.categories
-});
+const mapStateToProps = (state, ownProps) => {
+    return {
+        categories: state.categories,
+        selectedCategory: state.categories[ownProps.categorySlug]
+    };
+};
 
 const mapDispatchToProps = {
-    fetchCategories
+    fetchCategories,
+    selectCategory
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
