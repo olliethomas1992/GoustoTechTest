@@ -9,13 +9,26 @@ class ProductsList extends Component {
         super(props);
         this.state = {
             searchTerm: "",
-            filterProducts: {}
+            filterProducts: {},
+            selectedCategory: {}
         };
     }
 
     componentDidMount() {
         this.props.fetchProducts().then(() => {
-            this.setState({ filterProducts: this.props.products });
+            this.setState({
+                filterProducts: this.getCategoryProducts(this.props.products)
+            });
+        });
+    }
+
+    componentWillReceiveProps({ selectedCategory }) {
+        return this.setState({
+            selectedCategory,
+            filterProducts: this.getCategoryProducts(
+                this.props.products,
+                selectedCategory
+            )
         });
     }
 
@@ -34,6 +47,22 @@ class ProductsList extends Component {
 
     /* Component Methods
     ---------------------------------------------------- */
+    getCategoryProducts(products, selectedCategory) {
+        if (!selectedCategory) {
+            return products;
+        }
+
+        let { id } = selectedCategory;
+        let categoryProducts = {};
+        _.map(products, product => {
+            product.categories.forEach(category => {
+                if (category.id === id) {
+                    categoryProducts[product.slug] = product;
+                }
+            });
+        });
+        return categoryProducts;
+    }
 
     renderProductList() {
         return _.map(this.state.filterProducts, (product, index) => {
@@ -46,7 +75,7 @@ class ProductsList extends Component {
     }
 
     onInputChange(event) {
-        let filteredProducts = _.filter(this.props.products, product => {
+        let filteredProducts = _.filter(this.getCategoryProducts(this.props.products, this.props.selectedCategory), product => {
             return product.title.match(new RegExp(event.target.value, "i"));
         });
 
@@ -58,7 +87,8 @@ class ProductsList extends Component {
 }
 
 const mapStateToProps = state => ({
-    products: state.products
+    products: state.products,
+    selectedCategory: state.selectedCategory
 });
 
 const mapDispatchToProps = {

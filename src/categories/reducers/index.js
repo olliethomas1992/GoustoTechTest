@@ -14,7 +14,7 @@ export function categoriesReducer(state = initialState, action) {
 export function selectedCategoryReducer(state = initialState, action) {
     switch (action.type) {
         case SELECT_CATEGORY:
-            return action.payload;
+            return action.payload || {};
         default:
             return state;
     }
