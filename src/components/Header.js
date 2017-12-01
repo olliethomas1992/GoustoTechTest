@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCategories, selectCategory } from "../categories/actions";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Header extends Component {
     /* Life Cycle Methods
@@ -26,7 +26,7 @@ class Header extends Component {
         return _.map(this.props.categories, (category, index) => {
             return (
                 <li className="menu__menu-item" key={index}>
-                    <Link to={`/${category.slug}`}>{category.title}</Link>
+                    <NavLink activeClassName="active" to={`/${category.slug}`}>{category.title}</NavLink>
                 </li>
             );
         });

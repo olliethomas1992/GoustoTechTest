@@ -2,17 +2,13 @@ $screensm: 768px;
 $screenmd: 992px;
 $screenlg: 1200px;
 
-
 .container {
-
     margin: 10px 10px;
 
-    @media (min-width: $screensm){
+    @media (min-width: $screensm) {
         margin: 10px 30px;
     }
-
 }
-
 
 .menu {
     padding: 0;
@@ -26,6 +22,20 @@ $screenlg: 1200px;
     &__menu-item {
         padding: 10px 5px;
         justify-content: space-evenly;
+
+        a {
+            text-decoration: none;
+            color: black;
+
+            &.active {
+                text-decoration: underline;
+                font-weight: bold;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 
