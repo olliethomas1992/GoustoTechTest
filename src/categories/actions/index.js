@@ -12,7 +12,7 @@ export function fetchCategories() {
     return axios.get(API_URL).then(({ data: { data } }) => {
         return {
             type: FETCH_CATEGORIES,
-            payload: _.mapKeys(transformCategories(data), 'slug')
+            payload: transformCategories(data)
         };
     });
 }

@@ -7,13 +7,9 @@ class Header extends Component {
     /* Life Cycle Methods
     ---------------------------------------------------- */
     componentDidMount() {
-        this.props.fetchCategories().then(() => {
-            this.props.selectCategory(this.props.selectedCategory || {});
-        });
     }
 
-    componentWillReceiveProps(newProps) {
-        this.props.selectCategory(newProps.selectedCategory);
+    componentWillReceiveProps() {
     }
 
     render() {
@@ -23,26 +19,24 @@ class Header extends Component {
     /* Component Functions
     ---------------------------------------------------- */
     renderCategories() {
-        return _.map(this.props.categories, (category, index) => {
-            return (
-                <li className="menu__menu-item" key={index}>
-                    <NavLink activeClassName="active" to={`/${category.slug}`}>{category.title}</NavLink>
-                </li>
-            );
+        if (!Array.isArray(this.props.categories)) {
+            return <li className="menu">Loading...</li>
+        }
+        
+        return this.props.categories.map((category, index) => {
+            return <li className="menu__menu-item" key={index}>
+            <NavLink to={`/${category.slug}`}>
+                {category.title}
+            </NavLink>
+            </li>
         });
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        categories: state.categories,
-        selectedCategory: state.categories[ownProps.categorySlug]
+        categories: state.categories
     };
 };
 
-const mapDispatchToProps = {
-    fetchCategories,
-    selectCategory
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, null)(Header);

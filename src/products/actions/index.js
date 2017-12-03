@@ -10,7 +10,7 @@ export function fetchProducts() {
     return axios.get(API_URL).then(({ data: { data } }) => {
         return {
             type: FETCH_PRODUCTS,
-            payload: _.mapKeys(transformProducts(data), "slug")
+            payload: transformProducts(data)
         };
     });
 }
