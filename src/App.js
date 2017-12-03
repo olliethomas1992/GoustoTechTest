@@ -9,14 +9,15 @@ import ProductsList from "./products/components/ProductsList";
 class App extends Component {
     constructor(props) {
         super(props);
-
         this.handleSelectCategory = this.handleSelectCategory.bind(this);
     }
 
     componentDidMount() {
         const categories = this.props
             .fetchCategories()
-            .then(this.handleSelectCategory(this.props.match.params.id));
+            .then(() => {
+                this.handleSelectCategory(this.props.match.params.id);
+            });
 
         const products = this.props.fetchProducts();
 
