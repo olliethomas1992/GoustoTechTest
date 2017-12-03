@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchProducts } from "../actions/index";
 import _ from "lodash";
+
+import { fetchProducts } from "../actions/index";
+import ProductItem from './ProductItem';
+
 
 class ProductsList extends Component {
     /* Component Life Cycle Methods
@@ -28,8 +31,12 @@ class ProductsList extends Component {
     render() {
         return (
             <div>
-                <input onChange={this.onInputChange} type="text" />
-                <ul>{this.renderProducts()}</ul>
+                <input
+                    className="search"
+                    onChange={this.onInputChange}
+                    type="text"
+                />
+                <ul className="products">{this.renderProducts()}</ul>
             </div>
         );
     }
@@ -39,7 +46,10 @@ class ProductsList extends Component {
 
     onInputChange(event) {
         this.setState({
-            filteredProducts: this.categoriseProducts(this.props.selectedCategory, this.props.products).filter(product => {
+            filteredProducts: this.categoriseProducts(
+                this.props.selectedCategory,
+                this.props.products
+            ).filter(product => {
                 return product.title.match(new RegExp(event.target.value, "i"));
             })
         });
@@ -66,7 +76,7 @@ class ProductsList extends Component {
 
     renderProducts() {
         return this.state.filteredProducts.map((product, index) => {
-            return <li key={index}>{product.title}</li>;
+            return <ProductItem key={index} product={product} />;
         });
     }
 }

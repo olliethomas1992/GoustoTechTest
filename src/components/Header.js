@@ -25,7 +25,7 @@ class Header extends Component {
         
         return this.props.categories.map((category, index) => {
             return <li className="menu__menu-item" key={index}>
-            <NavLink to={`/${category.slug}`}>
+            <NavLink className="btn-link" to={`/${category.slug}`}>
                 {category.title}
             </NavLink>
             </li>

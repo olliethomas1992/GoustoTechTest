@@ -10,6 +10,20 @@ $screenlg: 1200px;
     }
 }
 
+.btn-link {
+    text-decoration: none;
+    color: black;
+
+    &.active {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .menu {
     padding: 0;
     margin: 0;
@@ -22,30 +36,20 @@ $screenlg: 1200px;
     &__menu-item {
         padding: 10px 5px;
         justify-content: space-evenly;
-
-        a {
-            text-decoration: none;
-            color: black;
-
-            &.active {
-                text-decoration: underline;
-                font-weight: bold;
-            }
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
     }
 }
 
 .products {
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
     list-style-type: none;
 
     &__product-item {
         padding: 10px 0;
+
+        .desc {
+            margin: 15px;
+        }
     }
 }
 
