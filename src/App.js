@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { fetchCategories, selectCategory } from "./categories/actions";
 import { fetchProducts } from "./products/actions";
-import Header from "./components/Header";
+import Header from "./global/components/Header";
 import ProductsList from "./products/components/ProductsList";
 
 class App extends Component {

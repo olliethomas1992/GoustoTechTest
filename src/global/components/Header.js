@@ -1,17 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCategories, selectCategory } from "../categories/actions";
+import { fetchCategories, selectCategory } from "../../categories/actions";
 import { NavLink } from "react-router-dom";
 
-class Header extends Component {
+export class Header extends Component {
     /* Life Cycle Methods
     ---------------------------------------------------- */
-    componentDidMount() {
-    }
-
-    componentWillReceiveProps() {
-    }
-
     render() {
         return <ul className="menu">{this.renderCategories()}</ul>;
     }
