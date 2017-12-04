@@ -12,3 +12,4 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
+
