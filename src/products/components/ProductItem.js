@@ -19,7 +19,7 @@ export default class ProductItem extends Component {
 
     render() {
         return (
-            <li className={"products__product-item"}>
+            <li className="products__product-item">
                 <a
                     className={`btn-link ${ this.state.toggleDesc ? 'active' : '' }`}
                     onClick={this.handleProductClick}

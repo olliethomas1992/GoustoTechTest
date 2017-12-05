@@ -14,7 +14,7 @@ export class Header extends Component {
     ---------------------------------------------------- */
     renderCategories() {
         if (!Array.isArray(this.props.categories)) {
-            return <li className="menu">Loading...</li>
+            return <li className="menu__menu-item">Loading...</li>;
         }
         
         return this.props.categories.map((category, index) => {
@@ -27,10 +27,6 @@ export class Header extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        categories: state.categories
-    };
-};
+export const mapStateToProps = state => ({categories: state.categories});
 
 export default connect(mapStateToProps, null)(Header);

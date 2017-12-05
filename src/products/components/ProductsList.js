@@ -6,7 +6,7 @@ import { fetchProducts } from "../actions/index";
 import ProductItem from './ProductItem';
 
 
-class ProductsList extends Component {
+export class ProductsList extends Component {
     /* Component Life Cycle Methods
     ---------------------------------------------------- */
     constructor(props) {
@@ -70,10 +70,6 @@ class ProductsList extends Component {
         });
     }
 
-    matchesSearchTerm(productTitle) {
-        return productTitle.match(`/${this.state.searchTerm}/i`);
-    }
-
     renderProducts() {
         return this.state.filteredProducts.map((product, index) => {
             return <ProductItem key={index} product={product} />;
@@ -81,7 +77,7 @@ class ProductsList extends Component {
     }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     products: state.products,
     selectedCategory: state.selectedCategory
 });
