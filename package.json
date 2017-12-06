@@ -15,6 +15,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "axios-mock-adapter": "^1.10.0",
         "babel-core": "^6.26.0",
         "babel-jest": "^21.2.0",
         "babel-loader": "^7.1.2",
@@ -55,13 +56,15 @@
         "setupTestFrameworkScriptFile": "./test-setup.js",
         "collectCoverageFrom": [
             "src/**/*.{js,jsx}",
+            "!src/index.js",
+            "!src/reducers.js",
+            "!src/routes.js",
             "!**/node_modules/**",
             "!**/build/**"
         ],
         "coverageReporters": [
             "json",
-            "lcov",
-            "text"
+            "lcov"
         ]
     }
 }

@@ -6,7 +6,7 @@ import { fetchProducts } from "./products/actions";
 import Header from "./global/components/Header";
 import ProductsList from "./products/components/ProductsList";
 
-class App extends Component {
+export class App extends Component {
     constructor(props) {
         super(props);
         this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -21,9 +21,7 @@ class App extends Component {
 
         const products = this.props.fetchProducts();
 
-        Promise.all([categories, products]).catch(error => {
-            console.log(error);
-        });
+        Promise.all([categories, products]);
     }
 
     componentWillReceiveProps(newProps) {
@@ -42,16 +40,18 @@ class App extends Component {
 
     handleSelectCategory(id) {
         if (this.props.categories.length) {
-            this.props.selectCategory(
+            return this.props.selectCategory(
                 this.props.categories.find(category => {
                     return category.slug === id;
                 })
             );
         }
+
+        return false;
     }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     categories: state.categories
 });
 

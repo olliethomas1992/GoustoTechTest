@@ -1,8 +1,28 @@
-import { fetchProducts } from "../actions";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import { fetchProducts, API_URL } from "../actions";
+import { FETCH_PRODUCTS } from "../../types";
 
 describe("Product Actions", () => {
-    test("Should retrieve some product and dispatch the correct action", () => {
+    test("Should retrieve products", () => {
+        let mockFetchProducts = jest.fn(() => {
+            return Promise.resolve({
+                data: {
+                    data: mockProducts
+                }
+            });
+        });
 
+        axios.get = mockFetchProducts;
+
+        return fetchProducts().then(data => {
+            expect(mockFetchProducts).toHaveBeenCalled();
+            expect(mockFetchProducts).toHaveBeenCalledWith(API_URL);
+            expect(data).toEqual({
+                type: FETCH_PRODUCTS,
+                payload: mockProducts
+            });
+        });
     });
 });
 

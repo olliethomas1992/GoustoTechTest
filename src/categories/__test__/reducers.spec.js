@@ -33,6 +33,11 @@ describe("Selected Categories Reducer", () => {
             selectedCategoryReducer(undefined, mockSelectedCategoryAction)
         ).toEqual({ title: "Food & Wine" });
     });
+
+    test("Should return the correct payload for the SELECT_CATEGORY with no payload", () => {
+        delete mockSelectedCategoryAction.payload;
+        expect(selectedCategoryReducer(undefined, mockSelectedCategoryAction)).toEqual({});
+    });
 });
 
 const mockFetchCategoriesAction = {

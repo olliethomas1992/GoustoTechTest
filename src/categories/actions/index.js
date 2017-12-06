@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import { FETCH_CATEGORIES, SELECT_CATEGORY } from "../../types";
 
-const API_URL = `https://api.gousto.co.uk/products/v2.0/categories`;
+export const API_URL = `https://api.gousto.co.uk/products/v2.0/categories`;
 
 /* Fetch Categories
 ---------------------------------------------------- */
@@ -17,7 +17,7 @@ export function fetchCategories() {
     });
 }
 
-function transformCategories(categories) {
+export function transformCategories(categories) {
     return categories.map(category => {
         const slug = slugify(category.title, {
             replacement: "-",
