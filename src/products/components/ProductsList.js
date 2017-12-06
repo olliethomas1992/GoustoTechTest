@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import _ from "lodash";
 
 import { fetchProducts } from "../actions/index";
-import ProductItem from './ProductItem';
-
+import ProductItem from "./ProductItem";
 
 export class ProductsList extends Component {
     /* Component Life Cycle Methods
@@ -43,7 +42,6 @@ export class ProductsList extends Component {
 
     /* Component Methods
     ---------------------------------------------------- */
-
     onInputChange(event) {
         this.setState({
             filteredProducts: this.categoriseProducts(

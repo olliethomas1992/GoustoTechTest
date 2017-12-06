@@ -1,27 +1,23 @@
 import React, { Component } from "react";
 
 export default class ProductItem extends Component {
+
+    /* Component Life Cycle
+    ---------------------------------------------------- */
     constructor(props) {
         super(props);
 
-        this.state = {
-            toggleDesc: false
-        };
+        this.state = { toggleDesc: false };
         this.handleProductClick = this.handleProductClick.bind(this);
-    }
-
-    handleProductClick(event) {
-        event.preventDefault();
-        this.setState({
-            toggleDesc: !this.state.toggleDesc
-        });
     }
 
     render() {
         return (
             <li className="products__product-item">
                 <a
-                    className={`btn-link ${ this.state.toggleDesc ? 'active' : '' }`}
+                    className={`btn-link ${
+                        this.state.toggleDesc ? "active" : ""
+                    }`}
                     onClick={this.handleProductClick}
                     href="#"
                 >
@@ -34,5 +30,14 @@ export default class ProductItem extends Component {
                 )}
             </li>
         );
+    }
+
+    /* Component Methods
+    ---------------------------------------------------- */
+    handleProductClick(event) {
+        event.preventDefault();
+        this.setState({
+            toggleDesc: !this.state.toggleDesc
+        });
     }
 }

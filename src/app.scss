@@ -1,7 +1,12 @@
+/* Variables
+---------------------------------------------------- */
 $screensm: 768px;
 $screenmd: 992px;
 $screenlg: 1200px;
 
+
+/* Application Boilerplate
+---------------------------------------------------- */
 .container {
     margin: 10px 10px;
 
@@ -24,6 +29,9 @@ $screenlg: 1200px;
     }
 }
 
+
+/* Application Header / Menu
+---------------------------------------------------- */
 .menu {
     padding: 0;
     margin: 0;
@@ -39,6 +47,8 @@ $screenlg: 1200px;
     }
 }
 
+/* Products List
+---------------------------------------------------- */
 .products {
     margin: 10px 0;
     padding: 0;
@@ -53,6 +63,8 @@ $screenlg: 1200px;
     }
 }
 
+/* Product Search
+---------------------------------------------------- */
 .search {
     height: 25px;
     width: 200px;

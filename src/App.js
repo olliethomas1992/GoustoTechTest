@@ -7,6 +7,8 @@ import Header from "./global/components/Header";
 import ProductsList from "./products/components/ProductsList";
 
 export class App extends Component {
+    /* Component Life Cycle
+    ---------------------------------------------------- */
     constructor(props) {
         super(props);
         this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -38,6 +40,8 @@ export class App extends Component {
         );
     }
 
+    /* Component Methods
+    ---------------------------------------------------- */
     handleSelectCategory(id) {
         if (this.props.categories.length) {
             return this.props.selectCategory(
