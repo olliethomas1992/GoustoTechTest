@@ -18,13 +18,13 @@ npm start
 
 to run the application.
 
-Or 
+Or to create a production build:
 
 ```
 npm run build
 ```
 
-to create a production build.
+the production build will be placed in the dist directory.
 
 ## Testing
 
