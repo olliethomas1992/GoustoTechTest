@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class ProductItem extends Component {
 
     /* Component Life Cycle
-    ----------------------------------------------------*/
+    ---------------------------------------------------- */
     constructor(props) {
         super(props);
 
