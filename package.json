@@ -6,7 +6,8 @@
     "scripts": {
         "clean": "rimraf dist",
         "start": "webpack-dev-server --open --color --config webpack.dev.js",
-        "build": "NODE_ENV=production npm run clean && webpack -p --config webpack.base.js",
+        "build":
+            "NODE_ENV=production npm run clean && webpack -p --config webpack.base.js",
         "test": "jest",
         "test:watch": "npm run test -- --watchAll",
         "coverage": "npm run test -- --coverage && node coverage-open"
@@ -63,10 +64,10 @@
             "!**/node_modules/**",
             "!**/build/**"
         ],
-        "coverageReporters": [
-            "json",
-            "lcov"
-        ],
-        "testResultsProcessor": "./node_modules/jest-junit"
+        "coverageReporters": ["json", "lcov"],
+        "testResultsProcessor": "jest-junit"
+    },
+    "jest-junit": {
+        "output": "./coverage/junit.xml"
     }
 }
